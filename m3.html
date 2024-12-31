@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="phones.css" />
+  <style>
+  </style>
+</head>
+<body>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="\university\add_register\coursereg.html" id="menu" >Add / register courses</a></li>
+      <li><a href="\university\payment\payment.html">Payment</a></li>
+      <li><a href="\university\grades\grades.html">Grades</a></li>
+    </ul>
+  </div>
+  <header>
+   
+  <span class="icon" id="menu-icon" onclick="toggleMenu()">
+    <ion-icon name="menu"></ion-icon>
+  </span>
+
+ <div class="logo">
+ <h3>E-STORE</h3>
+    <span></span>
+  </div>
+  <a href="laptops.html" class="word">Laptops</a>
+  <a href="pc.html" class="word">PCs</a>
+  <a href="mobile.html" class="word">Mobile phones</a>
+  <a href="www.example.com" class="fb"><ion-icon name="logo-facebook"></ion-icon></a> 
+  <a href="www.example.com" class="ig"><ion-icon name="logo-instagram"></ion-icon></a> 
+  <a href="www.example.com" class="wa"><ion-icon name="logo-whatsapp"></ion-icon></a> 
+    <a href="cart.html" class="ca"><ion-icon name="cart-outline"></ion-icon></a> 
+   
+   
+   
+
+
+</header>
+	
+	<div class="cover">
+		<div class="cover">
+	     
+        <img src="huawei.jpeg" alt="Gaming Laptop" class="laptop-image">
+        <div class="specs">
+            <h2>Specifications</h2>
+            <ul>
+			    <li><strong>Device name:</strong> Huawei Nova 12i  </li>
+                <li><strong>Processor:</strong> Qualcomm Snapdragon 680 4G</li>
+                <li><strong>RAM:</strong> 8 GB</li>
+                <li><strong>Rear Camera:</strong> Dual 108 MP + 2 MP</li>
+                <li><strong>Storage:</strong> 256 GB </li>
+                <li><strong>Display:</strong>  6.6 inches IPS display</li>
+                <li><strong>Battery :</strong> 5000 mAh</li>
+                <li><strong>Front Camera</strong> 8 MP</li>
+				<li><strong>Price:</strong> 9999 EGP</li>
+				<button class="add-to-cart" data-product="huawei" data-price=9999>Add to Cart</button>
+            </ul>
+        </div>
+
+    </div>
+	  
+	  
+	  
+	 
+   
+     
+    </div>
+		
+	<div class="footerr"><footer>
+        <p>&copy; 2023 My E-commerce Store</p>
+        <p>Contact: info@myecommerce.com</p>
+        <p>
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Privacy Policy</a>
+        </p>
+		</footer>
+   	  </div>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('show-menu');
+    }
+	// Function to add an item to local storage
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      if (cart[productName]) {
+        cart[productName ].quantity += 1; // Increment quantity if already in cart
+      } else {
+        cart[productName] = { quantity: 1, price: price }; // Add new item with price
+      }
+      localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+      alert(`${productName} has been added to your cart.`);
+    }
+
+    // Add event listener to all "Add to Cart" buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-product');
+        const price = this.getAttribute('data-price');
+        addToCart(productName, price); // Pass both product name and price
+      });
+    });
+  </script>
+  <script src="script2.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

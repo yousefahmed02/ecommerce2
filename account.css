@@ -1,0 +1,158 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('onlineshop.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  z-index: 99;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+}
+
+.logo {
+  font-family: sofia, sans-serif;
+  font-size: 1.8em;
+  color: #fff;
+  user-select: none;
+  margin-left: 50px;
+}
+.icon2 {
+    position: absolute;
+	right :50px;
+	font-size:1.2em;
+	color:#000000;
+	line-height:55px;
+	font-size:2.5em;
+
+}
+.icon2:hover{
+   color:#fff;
+  
+}
+
+.icon4 {
+  position: absolute;
+  right: 90px;
+  font-size: 1.2em;
+  color: #000000;
+  line-height: 55px;
+  font-size: 2.5em;
+
+}
+.icon4:hover{
+   color:#fff;
+  
+}
+.word{
+  position:relative;
+  left:140px;
+
+  
+  
+}
+.word:hover{
+   color:#fff;
+  
+}
+
+.cover {
+  position: relative;
+  width: 700px;
+  height: 550px;
+  color:#fff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform .5s ease, height .2s ease;
+}
+
+.userinfo {
+  padding-top: 10px;
+  padding-left: 80px;
+  position: fixed;
+  top: -1cm;
+  left: 0cm;
+  text-align: left;
+  font-size: 3em;
+  font-family: sofia, sans-serif;
+  color:#fff;
+}
+
+.profile-card {
+  font-family: sofia, sans-serif;
+  padding: 10px;
+   color:#fff;
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+}
+
+.profile-card p {
+  font-family: sofia, sans-serif;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color:#fff;
+}
+
+.profile-card span {
+  font-weight: bold;
+  font-size: 1em;
+  color:#fff;
+}
+.icon3 {
+  position: fixed;
+  top: 0px;
+  left: 10px;
+  font-size: 4em;
+   color:#fff;
+}
+.icon3 :hover {
+  color: #fff;
+
+.icon {
+  position: fixed;
+  top: 0px;
+  left: 10px;
+  font-size: 4em;
+  color: #000000;
+}
+
+.icon :hover {
+  color: #fff;
+}
+
+.icon2 {
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  font-size: 4em;
+  color: #000000;
+}
+
+.icon2 :hover {
+  color: #fff;
+}

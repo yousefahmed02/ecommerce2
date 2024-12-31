@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="\university\add_register\coursereg.html" id="menu">Add / register courses</a></li>
+      <li><a href="\university\payment\payment.html">Payment</a></li>
+      <li><a href="\university\grades\grades.html">Grades</a></li>
+    </ul>
+  </div>
+  <header>
+    <span class="icon" id="menu-icon" onclick="toggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </span>
+    <div class="logo">
+      <h3>texch-eshp</h3>
+      <span></span>
+    </div>
+    <a href="\university\add_register\coursereg.html" class="word">Courses</a>
+    <a href="\university\grades\grades.html" class="word">Grades</a>
+    <a href="\university\payment\payment.html" class="word">Admission</a>
+    <a href="www.example.com" class="fb"><ion-icon name="logo-facebook"></ion-icon></a> 
+    <a href="www.example.com" class="ig"><ion-icon name="logo-instagram"></ion-icon></a> 
+    <a href="www.example.com" class="wa"><ion-icon name="logo-whatsapp"></ion-icon></a> 
+    <a href="cart.html" class="ca"><ion-icon name="cart-outline"></ion-icon></a> 
+  </header>
+  
+  <div class="cover">
+    <div class="cover">
+      <img src="laptopg1.png" alt="Gaming Laptop" class="laptop-image">
+      <div class="specs">
+        <h2>Specifications</h2>
+        <ul>
+          <li><strong>Device name:</strong> Lenovo LOQ 15IRH8 Gaming Laptop </li>
+          <li><strong>Processor:</strong> Intel Core i5-12450H 8Cores</li>
+          <li><strong>RAM:</strong> 16GB DDR5 RAM</li>
+          <li><strong>Graphics Card:</strong> 4GB GDDR6 NVIDIA GeForce RTX2050 Graphics</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 15.6" FHD (1920x1080) IPS 350nits 144Hz-Storm Grey</li>
+          <li><strong>Battery Life:</strong> Up to 6 hours</li>
+          <li><strong>Weight:</strong> 5.5 lbs (2.5 kg)</li>
+          <li><strong>Price:</strong> 36,000 EGP</li>
+          <button class="add-to-cart" data-product="Lenovo LOQ 15IRH8 Gaming Laptop - 36,000 EGP">Add to Cart</button>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footerr">
+    <footer>
+      <p>&copy; 2023 My E-commerce Store</p>
+      <p>Contact: info@myecommerce.com</p>
+      <p>
+        <a href="#">Terms & Conditions</a> | 
+        <a href="#">Privacy Policy</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('show-menu');
+    }
+
+   // Add event listener to the "Add to Cart" button
+    document.querySelector('.add-to-cart').addEventListener('click', function() {
+      const productName = this.getAttribute('data-product');
+      addToCart(productName);
+    });
+
+    // Function to add an item to local storage
+    function addToCart(productName) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      if (cart[productName]) {
+        cart[productName]++;
+      } else {
+        cart[productName] = 1;
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} has been added to your cart.`);
+    }

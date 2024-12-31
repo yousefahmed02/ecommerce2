@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="styles2.css" />
+  <style>
+  </style>
+</head>
+<body>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="\university\add_register\coursereg.html" id="menu" >Add / register courses</a></li>
+      <li><a href="\university\payment\payment.html">Payment</a></li>
+      <li><a href="\university\grades\grades.html">Grades</a></li>
+    </ul>
+  </div>
+  <header>
+   
+  <span class="icon" id="menu-icon" onclick="toggleMenu()">
+    <ion-icon name="menu"></ion-icon>
+  </span>
+
+ <div class="logo">
+ <h3>texch-eshp</h3>
+    <span></span>
+  </div>
+  <a href="laptops.html" class="word">Laptops</a>
+  <a href="pc.html" class="word">PCs</a>
+  <a href="mobile.html" class="word">Mobile phones</a>
+  <a href="www.example.com" class="fb"><ion-icon name="logo-facebook"></ion-icon></a> 
+  <a href="www.example.com" class="ig"><ion-icon name="logo-instagram"></ion-icon></a> 
+  <a href="www.example.com" class="wa"><ion-icon name="logo-whatsapp"></ion-icon></a> 
+    <a href="cart.html" class="ca"><ion-icon name="cart-outline"></ion-icon></a> 
+   
+   
+   
+
+
+</header>
+	
+	<div class="cover">
+     <h1 class=thank> Thank you for visiting our store!<h1>
+</div>
+	  
+	  
+	  
+	 
+   
+     
+    
+		
+	<div class="footerr"><footer>
+        <p>&copy; 2023 My E-commerce Store</p>
+        <p>Contact: info@myecommerce.com</p>
+        <p>
+            <a href="#">Terms & Conditions</a> 
+            <a href="#">Privacy Policy</a>
+        </p>
+		</footer>
+   	  </div>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('show-menu');
+    }
+// Function to display cart items
+function displayCart() {
+    const cartItemsList = document.getElementById('cartItems');
+    const totalPriceElement = document.getElementById('totalPrice');
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    cartItemsList.innerHTML = ''; // Clear the list before displaying
+    let total = 0; // Initialize total price
+
+    for (const [productName, details] of Object.entries(cart)) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${details.quantity}x ${productName} - ${details.price}`;
+
+        // Calculate total price
+        total += details.price * details.quantity;
+
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'del'; // Add a class for styling
+        deleteButton.onclick = function() {
+            deleteFromCart(productName);
+        };
+
+        listItem.appendChild(deleteButton);
+        cartItemsList.appendChild(listItem);
+    }
+
+    // Update total price display
+    totalPriceElement.textContent = `Total Price: $${total.toFixed(2)}`;
+}
+
+// Function to delete an item from the cart
+function deleteFromCart(productName) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    delete cart[productName]; // Remove the item from the cart
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+    displayCart(); // Refresh the cart display
+}
+
+// Function to add item to cart
+function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    if (cart[productName]) {
+        cart[productName].quantity += 1; // Increment quantity if already in cart
+    } else {
+        cart[productName] = { quantity: 1, price: parseFloat(price.replace(/[^0-9.-]+/g,"")) }; // Add new item, convert price to number
+    }
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+    displayCart(); // Refresh the cart display
+}
+
+// Example of adding event listener to the add-to-cart button
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-product');
+        const price = this.getAttribute('data-price');
+        addToCart(productName, price);
+    });
+});
+
+// Call displayCart on page load
+window.onload = displayCart;
+  </script>
+  <script src="script2.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

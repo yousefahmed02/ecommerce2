@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="pay.css" />
+  <style>
+  </style>
+</head>
+<body>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="\university\add_register\coursereg.html" id="menu" >Add / register courses</a></li>
+      <li><a href="\university\payment\payment.html">Payment</a></li>
+      <li><a href="\university\grades\grades.html">Grades</a></li>
+    </ul>
+  </div>
+  <header>
+   
+  <span class="icon" id="menu-icon" onclick="toggleMenu()">
+    <ion-icon name="menu"></ion-icon>
+  </span>
+
+ <div class="logo">
+ <h3>texch-eshp</h3>
+    <span></span>
+  </div>
+  <a href="laptops.html" class="word">Laptops</a>
+  <a href="pc.html" class="word">PCs</a>
+  <a href="mobile.html" class="word">Mobile phones</a>
+  <a href="www.example.com" class="fb"><ion-icon name="logo-facebook"></ion-icon></a> 
+  <a href="www.example.com" class="ig"><ion-icon name="logo-instagram"></ion-icon></a> 
+  <a href="www.example.com" class="wa"><ion-icon name="logo-whatsapp"></ion-icon></a> 
+    <a href="cart.html" class="ca"><ion-icon name="cart-outline"></ion-icon></a> 
+   
+   
+   
+
+
+</header>
+	
+	<div class="cover">
+
+	  <div class="container">
+		<h1>Confirm Your Payment</h1>
+		<form action="save_pay_data.php" method="post">
+		  <div class="first-row">
+			<div class="owner">
+			  <h3>Owner</h3>
+			  <div class="input-field">
+				<input type="text" name="owner" required>
+			  </div>
+			</div>
+			<div class="cvv">
+			  <h3>CVV</h3>
+			  <div class="input-field">
+				<input type="password" name="cvv" required>
+			  </div>
+			</div>
+		  </div>
+		  <div class="second-row">
+			<div class="card-number">
+			  <h3>Card Number</h3>
+			  <div class="input-field">
+				<input type="text" name="card_number" required>
+			  </div>
+			</div>
+		  </div>
+		  <div class="third-row">
+			<h3>Card Expiration</h3>
+			<div class="selection">
+			  <div class="date">
+				<select name="expiration_month" id="months" required>
+				  <option value="">Select Month</option>
+				  <option value="Jan">Jan</option>
+				  <option value="Feb">Feb</option>
+				  <option value="Mar">Mar</option>
+				  <option value="Apr">Apr</option>
+				  <option value="May">May</option>
+				  <option value="Jun">Jun</option>
+				  <option value="Jul">Jul</option>
+				  <option value="Aug">Aug</option>
+				  <option value="Sep">Sep</option>
+				  <option value="Oct">Oct</option>
+				  <option value="Nov">Nov</option>
+				  <option value="Dec">Dec</option>
+				</select>
+				<select name="expiration_year" id="years" required>
+				  <option value="">Select Year</option>
+				  <option value="2020">2024</option>
+				  <option value="2019">2023</option>
+				  <option value="2018">2022</option>
+				  <option value="2017">2021</option>
+				  <option value="2016">2020</option>
+				  <option value="2015">2019</option>
+				</select>
+			  </div>
+			  <div class="cards">
+				<img src="mc.png" alt="">
+				<img src="vi.png" alt="">
+				<img src="pp.png" alt="">
+			  </div>
+			</div>    
+		  </div>
+		  <input class="btn" type="submit" value="Confirm">
+		</form>
+	  </div>
+	</div>
+
+	  
+	  
+	  
+	 
+   
+     
+    
+		
+	<div class="footerr"><footer>
+        <p>&copy; 2023 My E-commerce Store</p>
+        <p>Contact: info@myecommerce.com</p>
+        <p>
+            <a href="#">Terms & Conditions</a> 
+            <a href="#">Privacy Policy</a>
+        </p>
+		</footer>
+   	  </div>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('show-menu');
+    }
+// Function to display cart items
+function displayCart() {
+    const cartItemsList = document.getElementById('cartItems');
+    const totalPriceElement = document.getElementById('totalPrice');
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    cartItemsList.innerHTML = ''; // Clear the list before displaying
+    let total = 0; // Initialize total price
+
+    for (const [productName, details] of Object.entries(cart)) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${details.quantity}x ${productName} - ${details.price}`;
+
+        // Calculate total price
+        total += details.price * details.quantity;
+
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'del'; // Add a class for styling
+        deleteButton.onclick = function() {
+            deleteFromCart(productName);
+        };
+
+        listItem.appendChild(deleteButton);
+        cartItemsList.appendChild(listItem);
+    }
+
+    // Update total price display
+    totalPriceElement.textContent = `Total Price: $${total.toFixed(2)}`;
+}
+
+// Function to delete an item from the cart
+function deleteFromCart(productName) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    delete cart[productName]; // Remove the item from the cart
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+    displayCart(); // Refresh the cart display
+}
+
+// Function to add item to cart
+function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    if (cart[productName]) {
+        cart[productName].quantity += 1; // Increment quantity if already in cart
+    } else {
+        cart[productName] = { quantity: 1, price: parseFloat(price.replace(/[^0-9.-]+/g,"")) }; // Add new item, convert price to number
+    }
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+    displayCart(); // Refresh the cart display
+}
+
+// Example of adding event listener to the add-to-cart button
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-product');
+        const price = this.getAttribute('data-price');
+        addToCart(productName, price);
+    });
+});
+
+// Call displayCart on page load
+window.onload = displayCart;
+  </script>
+  <script src="script2.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
